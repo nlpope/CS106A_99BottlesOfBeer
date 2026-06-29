@@ -10,23 +10,43 @@ import acm.program.*;
 
 public class CS106A_99BottlesOfBeer extends ConsoleProgram
 {	
-	private static final int TRADITIONAL_STARTING_NUMBER_OF_BOTTLES = 99;
+	private static int startingNumberOfBottles;
 	
 	public void run()
 	{ 
 		introduceApp();
+		promptUser();
 		singSong();
 	}
 	
 	
 	private void introduceApp()
 	{
-		//testing push after Network debacle
+		println("This Java program sings '99 bottles of beer on the wall' " +
+				"but lets you choose the starting number. ");
+	}
+	
+	
+	private void promptUser()
+	{
+		startingNumberOfBottles = readInt("Input a positive integer as a starting value: ");
 	}
 	
 	
 	private void singSong()
 	{
-		
+		for (int i = startingNumberOfBottles; i > 0; i--){
+			//note: making the below iDecremented = i-- doesn't do what you think
+			//it affects the original integer, decrementing THAT instead of storing
+			//a totally separate value, which is what the below NOW does
+			int iDecremented = i - 1;
+			String grammaredBottle = " bottle" + (i > 1 ? "s":"") + " of beer";
+			
+			println(i + grammaredBottle + " on the wall.");
+			println(i + grammaredBottle);
+			println("You take one down and pass it around.");
+			println(iDecremented + grammaredBottle + " on the wall.");
+			println("");
+		}
 	}
 }
